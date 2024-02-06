@@ -3,27 +3,6 @@ import Card from '../UI/Card';
 import classes from './AvailableMeals.module.css';
 import MealItem from './MealItem/MealItem';
 
-const DUMMY_MEALS = [
-  {
-    id: 'm1',
-    name: 'Sushi',
-    description: 'Finest fish and veggies',
-    price: 22.99,
-  },
-  {
-    id: 'm2',
-    name: 'Sushi',
-    description: 'Finest fish and veggies',
-    price: 22.99,
-  },
-  {
-    id: 'm3',
-    name: 'Sushi',
-    description: 'Finest fish and veggies',
-    price: 22.99,
-  },
-];
-
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -33,14 +12,13 @@ const AvailableMeals = () => {
   useEffect(() => {
     const fetchMeals = async () => {
       try {
-        // const response = await fetch(
-        //   'https://react-demo-86a1e-default-rtdb.asia-southeast1.firebasedatabase.app/meals.json'
-        // );
-        // if (!response.ok) {
-        //   throw new Error('Something went wrong!');
-        // }
-        
-        const data = DUMMY_MEALS;
+        const response = await fetch(
+          'https://react-demo-86a1e-default-rtdb.asia-southeast1.firebasedatabase.app/meals.json'
+        );
+        if (!response.ok) {
+          throw new Error('Something went wrong!');
+        }
+        const data = await response.json();
         const loadedMeals = [];
   
         for (const key in data) {

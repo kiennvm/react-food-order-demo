@@ -3,7 +3,6 @@ import Modal from '../UI/Modal';
 import classes from './Cart.module.css';
 import CartContext from '../../store/cart-context';
 import CartItem from './CartItem';
-import Checkout from './Checkout';
 import React from 'react';
 
 const Cart = (props) => {
@@ -27,22 +26,7 @@ const Cart = (props) => {
   };
 
   const submitOrderHandler = async (userData) => {
-    setIsSubmitting(true);
-
-    await fetch(
-      'https://react-demo-86a1e-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json',
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          user: userData,
-          orderItems: cartCtx.items,
-        }),
-      }
-    );
-
-    setIsSubmitting(false);
-    setDidSubmit(true);
-    cartCtx.clearCart();
+    
   };
 
   const cartItems = (
@@ -80,9 +64,7 @@ const Cart = (props) => {
         <span>Total Amount</span>
         <span>{totalAmount}</span>
       </div>
-      {isChechout && (
-        <Checkout onConfirm={submitOrderHandler} onCancel={props.onClose} />
-      )}
+
       {!isChechout && modalActions}
     </React.Fragment>
   );

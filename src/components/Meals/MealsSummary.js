@@ -3,14 +3,12 @@ import classes from './MealsSummary.module.css';
 const MealsSummary = () => {
   return (
     <section className={classes.summary}>
-      <h2>Delicious Food, Delivered To You</h2>
+      <h2>Tận tâm giao hàng</h2>
       <p>
-        Choose your favorite meal from our broad selection of available meals
-        and enjoy a delicious lunch or dinner at home.
+        Hãy lựa chọn món ăn ưa thích của bạn
       </p>
       <p>
-        All our meals are cooked with high-quality ingredients, just-in-time and
-        of course by experienced chefs!
+        Các món ăn của chúng tôi đều là đặc sản của Việt Nam
       </p>
     </section>
   );
